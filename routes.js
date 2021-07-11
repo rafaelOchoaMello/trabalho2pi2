@@ -23,7 +23,7 @@ routes.get('/produtos', ProdutoController.index)
 //Produtos::Métodos do trabalho
 routes.put('/produtos/destacar/:id', ProdutoController.destacar)
       .get('/destaques', ProdutoController.destaques)
-      .post('/produtos/filtro', ProdutoController.filtro);
+      .post('/produtos/filtro/', ProdutoController.filtro);
 
 //Agendamentos::CRUD
 routes.get('/agendamento/:id', AgendaController.show)

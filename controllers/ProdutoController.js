@@ -128,7 +128,12 @@ module.exports = {
         const palavra = req.body.palavra;
 
         try {
-            const dados = await knex('produtos').where('nome', 'like', '%' + palavra + '%').select();
+            const dados = await knex
+                .select('p.id', 'p.nome', 'p.valor', 'p.foto', 'p.destaque', 't.tipo')
+                .from('produtos as p')
+                .where('p.nome', 'like', '%' + palavra + '%')
+                .join('tipo_produto as t', 'p.tipo_produto_id', '=', 't.id')
+
             if (dados.length > 0)
                 res.status(201).json(dados);
             else
